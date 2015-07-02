@@ -33,11 +33,21 @@
 // Problem 3 //
 
 var letterCount = function(string){
+	var most = 0;
+	var winner = '';
 	var stringArray = string.split(' ');
 	stringArray.forEach(function(word){
-		word
+		for (var i = 0; i < word.length; i++) {
+			var numMatches = word.match('/'+word[i]+'/'g).length;
+			if(numMatches > most){
+				most = numMatches;
+				winner = word;
+			}
+			console.log(word, i, word[i], numMatches, most, winner);
+		}
 	})
+	return winner;
 
 }
 
-letterCount('Today is the greatest day ever!')
+console.log(letterCount('Today is the greatest day ever'))
